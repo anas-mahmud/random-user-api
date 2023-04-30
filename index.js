@@ -14,9 +14,9 @@ app.use(viewCount);
 
 app.use("/api/user", userRoutes);
 
-// app.get("/", (req, res) => {
-//   res.send("random user api is running");
-// });
+app.get("/", (req, res) => {
+  res.send("random user api is running");
+});
 
 app.all("*", (req, res) => {
   res.send("No routes found");
