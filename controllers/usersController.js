@@ -235,7 +235,14 @@ let users = [
 module.exports.getUsers = (req, res) => {
   const { limit } = req.query;
   // console.log(limit);
-  res.send(users.slice(0, limit));
+  // res.send(users.slice(0, limit));
+
+  // preferable format to send response
+  res.status(200).send({
+    success: true,
+    massage: "Success",
+    data: users.slice(0, limit),
+  });
 };
 
 // get user by id
@@ -243,14 +250,28 @@ module.exports.getUserById = (req, res) => {
   const { id } = req.params;
   // console.log(id);
   const user = users.find((user) => user.id == id);
-  res.send(user);
+  // res.send(user);
+
+  // preferable format to send response
+  res.status(200).send({
+    success: true,
+    massage: "Success",
+    data: user,
+  });
 };
 
 // get a random user
 module.exports.getUserRandomly = (req, res) => {
   const randomId = Math.floor(Math.random() * users.length);
   const user = users.find((user) => user.id == randomId);
-  res.send(user);
+  // res.send(user);
+
+  // preferable format to send response
+  res.status(200).send({
+    success: true,
+    massage: "Success",
+    data: user,
+  });
 };
 
 // add a new user
